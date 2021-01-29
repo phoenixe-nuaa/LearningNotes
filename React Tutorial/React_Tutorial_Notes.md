@@ -76,7 +76,7 @@ class App extends React.Component {
 }
 ```
 
-Inside the `return`, we're going to put what looks like a simple HTML element. Note that we're not returning a string here, so don't use quotes around the element. This is called `JSX`, and we'll learn more about it soon.
+Inside the `return`, we're going to put what looks like a simple HTML element.
 
 ```react
 class App extends React.Component {
@@ -166,9 +166,9 @@ my-app
 
 In `/public`, our important file is `index.html`, which is very similar to the static `index.html` file we made earlier - just a `root` div. 
 
-The `/src` directory will contain all our React code. Go ahead and delete all the files out of the `/src` directory, and we'll create our own boilerplate file without any bloat. We'll just keep `index.css` and `index.js`.
+The `/src` directory will contain all our *React code*. Go ahead and delete all the files out of the `/src` directory. We'll just keep `index.css` and `index.js`.
 
-For `index.css`, I just copy-and-pasted the contents of [Primitive CSS](https://taniarascia.github.io/primitive/css/main.css) into the file. If you want, you can use Bootstrap or whatever CSS framework you want, or nothing at all. I just find it easier to work with.
+For `index.css`, I just copy-and-pasted the contents of [Primitive CSS](https://taniarascia.github.io/primitive/css/main.css) into the file. You can use Bootstrap or whatever CSS framework you want.
 
 Now in `index.js`, we're importing React, ReactDOM, and the CSS file.
 
@@ -246,7 +246,7 @@ JSX is actually closer to JavaScript, not HTML, so there are a few key differenc
 - Properties and methods in JSX are **camelCase** - `onclick` will become `onClick`.
 - **Self-closing** tags *must* end in a slash - e.g. `<img />`
 
-JavaScript expressions can also be embedded inside JSX using curly braces, including variables, functions, and properties.
+JavaScript expressions can also be embedded inside JSX using ***curly braces***, including variables, functions, and properties.
 
 ```jsx
 const name = 'Tania'
@@ -362,7 +362,7 @@ If you check back on your live environment, you'll see the `Table` loaded in.
 
 ### Simple Components
 
-The other type of component in React is the **simple component**, which is a function. This component doesn't use the `class` keyword. Let's take our `Table` and make two simple components for it - a table header, and a table body.
+The other type of component in React is the **simple component**, which is a *function*. This component doesn't use the `class` keyword. Let's take our `Table` and make two simple components for it - a table header, and a table body.
 
 We're going to use ES6 arrow functions to create these simple components. First, the table header.
 
@@ -424,7 +424,7 @@ class Table extends Component {
 }
 ```
 
-As you can see, components can be nested in other components, and simple and class components can be mixed.
+As you can see, components can be **nested** in other components, and simple and class components can be **mixed**.
 
 > A class component must include `render()`, and the `return` can only return one parent element.
 
@@ -458,7 +458,7 @@ const TableBody = () => {
 }
 ```
 
-Then let's move all that data to an array of objects, as if we were bringing in a JSON-based API. We'll have to create this array inside our `render()`.
+Then let's move all that data to an array of objects, as if we were bringing in a *JSON-based API*. We'll have to create this array inside our `render()`.
 
 ```react
 class App extends Component {
@@ -491,7 +491,7 @@ class App extends Component {
 }
 ```
 
-Now, we're going to pass the data through to the child component (`Table`) with properties, kind of how you might pass data through using `data-` attributes. We can call the property whatever we want, as long as it's not a reserved keyword, so I'll go with `characterData`. The data I'm passing through is the `characters` variable, and I'll put curly braces around it as it's a JavaScript expression.
+Now, we're going to pass the data through to the child component `Table` with properties, kind of how you might pass data through using `data-` attributes. We can call the property `characterData`. The data I'm passing through is the `characters` variable, and I'll put curly braces around it as it's a JavaScript expression.
 
 ```react
 return (
@@ -501,9 +501,7 @@ return (
 )
 ```
 
-Now that data is being passed through to `Table`, we have to work on accessing it from the other side.
-
-This data is not in the actual DOM yet, though. In `Table`, we can access all props through `this.props`. We're only passing one props through, characterData, so we'll use `this.props.characterData` to retrieve that data.
+Now that data is being passed through to `Table`, we have to work on accessing it from the other side. In `Table`, we can access all props through `this.props`. We're only passing one props through, characterData, so we'll use `this.props.characterData` to retrieve that data.
 
 I'm going to use the ES6 property shorthand to create a variable that contains `this.props.characterData`.
 
@@ -511,7 +509,7 @@ I'm going to use the ES6 property shorthand to create a variable that contains `
 const {characterData} = this.props
 ```
 
-Since our `Table` component actually consists of two smaller simple components, I'm going to pass it through to the `TableBody`, once again through props.
+I'm going to pass it through to the `TableBody`, once again through props.
 
 ```react
 class Table extends Component {
@@ -545,11 +543,115 @@ const TableBody = (props) => {
 }
 ```
 
-If you view the front end of the app, all the data is loading in now.
+If you view the front end of the app, all the data is loading in now. You'll notice I've added a key index to each table row. You should always use [**keys**](https://reactjs.org/docs/lists-and-keys.html#keys) when making lists in React, as they help identify each list item. We'll also see how this is necessary in a moment when we want to manipulate list items.
 
-You'll notice I've added a key index to each table row. You should always use [keys](https://reactjs.org/docs/lists-and-keys.html#keys) when making lists in React, as they help identify each list item. We'll also see how this is necessary in a moment when we want to manipulate list items.
-
-Props are an effective way to pass existing data to a React component, however the component cannot change the props - they're read-only. In the next section, we'll learn how to use state to have further control over handling data in React.
+Props are an effective way to pass existing data to a React component, however the component cannot change the props - they're *read-only*. In the next section, we'll learn how to use state to have further control over handling data in React.
 
 ## State
+
+Right now, we're storing our character data in an array in a variable, and passing it through as props. This is good to start, but imagine if we want to be able to delete an item from the array. With props, we have a *one way* data flow, but with state we can update private data from a component.
+
+You can think of state as any data that should be saved and modified without necessarily being added to a database - for example, adding and removing items from a shopping cart before confirming your purchase.
+
+To start, we're going to create a `state` object.
+
+```react
+class App extends Component {
+  state = {}
+}
+```
+
+The object will contain properties for everything you want to store in the state. For us, it's `characters`.
+
+```react
+class App extends Component {
+  state = {
+    characters: [],
+  }
+}
+```
+
+Move the entire array of objects we created earlier into `state.characters`.
+
+```react
+class App extends Component {
+  state = {
+    characters: [
+      {
+        name: 'Charlie',
+        // the rest of the data
+      },
+    ],
+  }
+}
+```
+
+Our data is officially contained in the state. Since we want to be able to remove a character from the table, we're going to create a `removeCharacter` method on the parent `App` class.
+
+To retrieve the state, we'll get `this.state.characters` using the same ES6 method as before. To update the state, we'll use `this.setState()`, a built-in method for manipulating state. We'll [filter the array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) based on an `index` that we pass through, and return the new array.
+
+> You must use `this.setState()` to modify an array. Simply applying a new value to `this.state.property` will not work.
+
+```react
+removeCharacter = (index) => {
+  const {characters} = this.state
+
+  this.setState({
+    characters: characters.filter((character, i) => {
+      return i !== index
+    }),
+  })
+}
+```
+
+`filter` does not mutate but rather creates a new array, and is a preferred method for modifying arrays in JavaScript. This particular method is testing an index vs. all the indices in the array, and returning all but the one that is passed through.
+
+Now we have to pass that function through to the component, and render a button next to each character that can invoke the function. We'll pass the `removeCharacter` function through as a prop to `Table`.
+
+```react
+render() {
+  const { characters } = this.state
+
+  return (
+    <div className="container">
+      <Table characterData={characters} removeCharacter={this.removeCharacter} />
+    </div>
+  )
+}
+```
+
+Since we're passing it down to `TableBody` from `Table`, we're going to have to pass it through again as a prop, just like we did with the character data.
+
+In addition, since it turns out that the only components having their own states in our project are `App` and `Form`, it would be best practice to transform `Table` into a simple component from the class component it currently is.
+
+```react
+const Table = (props) => {
+  const {characterData, removeCharacter} = props
+
+  return (
+    <table>
+      <TableHeader />
+      <TableBody characterData={characterData} removeCharacter={removeCharacter} />
+    </table>
+  )
+}
+```
+
+Here's where that index we defined in the `removeCharacter()` method comes in. In the `TableBody` component, we'll pass the key/index through as a parameter, so the filter function knows which item to remove. We'll create a button with an `onClick` and pass it through.
+
+```react
+<tr key={index}>
+  <td>{row.name}</td>
+  <td>{row.job}</td>
+  <td>
+    <button onClick={() => props.removeCharacter(index)}>Delete</button>
+  </td>
+</tr>
+```
+
+> The `onClick` function must pass through a function that returns the `removeCharacter()` method, otherwise it will try to run automatically.
+
+Awesome. Now we have delete buttons, and we can modify our state by deleting a character.
+
+## Submitting Form Data
 
