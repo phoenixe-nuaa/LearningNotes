@@ -2,7 +2,7 @@
 
 ## Overview
 
-JavaScript is a multi-paradigm, dynamic language with types and operators, standard built-in objects, and methods. Its syntax is based on the Java and C languages — many structures from those languages apply to JavaScript as well. JavaScript supports ***object-oriented programming*** with object **prototypes**, instead of classes (see more about [prototypical inheritance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) and ES2015 [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)). JavaScript also supports ***functional programming*** — because they are objects, functions may be stored in variables and passed around like any other object.
+JavaScript is a multi-paradigm, dynamic language with types and operators, standard built-in objects, and methods. JavaScript supports ***object-oriented programming*** with object **prototypes**, instead of classes (see more about [prototypical inheritance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) and ES2015 [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)). JavaScript also supports ***functional programming*** — because they are objects, functions may be stored in variables and passed around like any other object.
 
 ## Types
 
@@ -26,23 +26,23 @@ And there are some built-in `Error` types as well.
 
 > Numbers in JavaScript are double-precision 64-bit format IEEE 754 values".
 
-according to the spec — There's no such thing as an **integer** in JavaScript (except [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)), so you have to be a little careful.
+according to the spec — There's no such thing as an **integer** in JavaScript (except [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)).
 
 ```javascript
-console.log(3 / 2);				// 1.5, not 1
+console.log(3 / 2);	            // 1.5, not 1
 console.log(Math.floor(3 / 2)); // 1
 ```
 
 So an ***apparent integer*** is in fact ***implicitly a float***.
 
-The standard [arithmetic operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#Arithmetic_operators) are supported, including addition, subtraction, modulus (or remainder) arithmetic, and so forth. There's also a built-in object that we did not mention earlier called [`Math`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) that provides advanced mathematical functions and constants:
+The standard [arithmetic operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#Arithmetic_operators) are supported, including addition, subtraction, modulus (or remainder) arithmetic, and so forth. There's also a built-in object called [`Math`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) that provides advanced mathematical functions and constants:
 
 ```javascript
 Math.sin(3.5);
 var cirsumference = 2 * Math.PI * r;
 ```
 
-You can convert a string to an integer using the built-in [`parseInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function. This takes the base for the conversion as an optional second argument, which you should always provide:
+You can convert a string to an integer using the built-in [`parseInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function. This takes the base for the conversion as an optional second argument:
 
 ```javascript
 parseInt('123', 10); // 123
@@ -58,8 +58,8 @@ parseInt('11', 2); // 3
 You can also use the unary `+` operator to convert values to numbers:
 
 ```javascript
-+ '42'; // 42
-+ '010'; // 10
++ '42';   // 42
++ '010';  // 10
 + '0x10'; // 16
 ```
 
@@ -91,7 +91,7 @@ JavaScript also has the special values [`Infinity`](https://developer.mozilla.or
 You can test for `Infinity`, `-Infinity` and `NaN` values using the built-in [`isFinite()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite) function:
 
 ```javascript
-isFinite(1 / 0);  	 // false
+isFinite(1 / 0);     // false
 isFinite(-Infinity); // false
 isFinite(NaN);       // false
 ```
@@ -119,16 +119,16 @@ To find the length of a string (in code units), access its `length` property:
 Strings have [methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Methods) as well that allow you to manipulate the string and access information about the string:
 
 ```javascript
-'hello'.charAt(0); // "h"
+'hello'.charAt(0);                       // "h"
 'hello, world'.replace('world', 'mars'); // "hello, mars"
-'hello'.toUpperCase(); // "HELLO"
+'hello'.toUpperCase();                   // "HELLO"
 ```
 
 ## Other Types
 
 ### null & undefined
 
-JavaScript distinguishes between [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null), which is a value that ***indicates a deliberate non-value*** (and is only accessible through the `null` keyword), and [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined), which is a value of type `undefined` that indicates an uninitialized variable — that is, ***a value hasn't even been assigned yet***. 
+JavaScript distinguishes between [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null), which is a value that indicates a deliberate ***non-value*** (and is only accessible through the `null` keyword), and [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined), which is a value of type `undefined` that indicates an ***uninitialized*** variable — that is, ***a value hasn't even been assigned yet***. 
 
 In JavaScript it is possible to declare a variable without assigning a value to it. If you do this, the variable's type is `undefined`. `undefined` is actually a **constant**.
 
@@ -177,10 +177,10 @@ for (let myLetVariable = 0; myLetVariable < 5; myLetVariable++) {
 
 ```javascript
 const Pi = 3.14; // variable Pi is set
-Pi = 1; // will throw an error because you cannot change a constant variable.
+Pi = 1;          // will throw an error because you cannot change a constant variable.
 ```
 
-**`var`** is the most common declarative keyword. A variable declared with the **`var`** keyword is available from the *function* it is declared in.
+**`var`** is the most common declarative keyword. A variable declared with the **`var`** keyword is available from the ***function*** it is declared in.
 
 ```javascript
 var a;
@@ -228,7 +228,7 @@ If you add a string to a number (or other value) everything is converted into a 
 
 *Adding an empty string to something is a useful way of converting it to a string itself.*
 
-[Comparisons](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in JavaScript can be made using `<`, `>`, `<=` and `>=`. These work for both *strings* and *numbers*. Equality is a little less straightforward. The double-equals operator performs **type** **coercion** if you give it different types:
+[Comparisons](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in JavaScript can be made using `<`, `>`, `<=` and `>=`. These work for both *strings* and *numbers*. The double-equals operator performs **type** **coercion** if you give it different types:
 
 ```javascript
 123 == '123'; // true
@@ -278,7 +278,7 @@ do {
 while (inputIsNotValid(input));
 ```
 
-JavaScript's [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) is the same as that in C and Java: it lets you provide the control information for your loop on a single line.
+JavaScript's [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) lets you provide the control information for your loop on a single line.
 
 ```javascript
 for (var i = 0; i < 5; i++) {
@@ -302,7 +302,7 @@ for (let property in object) {
 }
 ```
 
-The `&&` and `||` operators use short-circuit logic, which means *whether they will execute their second operand is dependent on the first*. This is useful for **checking for null objects before accessing their attributes**:
+The `&&` and `||` operators use **short-circuit** logic, which means whether they will execute their second operand is dependent on the first. This is useful for **checking for null objects before accessing their attributes**:
 
 ```javascript
 var name = o && o.getName();
@@ -375,11 +375,11 @@ var obj = {
 Attribute access can be chained together:
 
 ```javascript
-obj.details.color; // orange
+obj.details.color;      // orange
 obj['details']['size']; // 12
 ```
 
-The following example creates an object prototype(`Person`) and an instance of that prototype(`you`).
+The following example creates an object prototype (`Person`) and an instance of that prototype (`you`).
 
 ```javascript
 function Person(name, age) {
@@ -423,7 +423,7 @@ For more on objects and prototypes see [Object.prototype](https://developer.mozi
 
 ## Arrays
 
-Arrays in JavaScript are actually a special type of **object**. They work very much like regular objects (numerical properties can naturally be accessed only using `[]` syntax) but they have one magic property called '`length`'. *This is always one more than the highest index in the array.*
+Arrays in JavaScript are actually a special type of **object**. They work very much like regular objects (numerical properties can naturally be accessed only using `[]` syntax) but they have one magic property called '`length`'.
 
 One way of creating arrays is as follows:
 
@@ -442,7 +442,7 @@ var a = ['dog', 'cat', 'hen'];
 a.length; // 3
 ```
 
-Note that `array.length` isn't necessarily the number of items in the array. Consider the following:
+Note that `array.length` isn't necessarily the number of items in the array:
 
 ```javascript
 var a = ['dog', 'cat', 'hen'];
@@ -450,7 +450,7 @@ a[100] = 'fox';
 a.length; // 101
 ```
 
-**Remember** — the length of the array is one more than the highest index.
+**Remember** — *the length of the array is one more than the highest index*.
 
 If you query a non-existent array index, you'll get a value of `undefined` in return:
 
@@ -474,14 +474,14 @@ for (const currentValue of a) {
 }
 ```
 
-You could also iterate over an array using a [`for`...`in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop, however this does not iterate over the array elements, but the *array indices*. Furthermore, if someone added new properties to `Array.prototype`, they would also be iterated over by such a loop. Therefore this loop type is not recommended for arrays.
+You could also iterate over an array using a [`for`...`in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop, however this does not iterate over the array elements, but the *array indices*. Furthermore, if someone added new properties to `Array.prototype`, they would also be iterated over by such a loop. Therefore this loop type is *not recommended* for arrays.
 
 Another way of iterating over an array that was added with ECMAScript 5 is `forEach()`:
 
 ```javascript
 ['dog', 'cat', 'hen'].forEach(function(currentValue, index, array)) {
-                              // Do something with currentValue or array[index]
-                              };
+    // Do something with currentValue or array[index]
+};
 ```
 
 If you want to append an item to an array do it like this:
@@ -518,9 +518,11 @@ function add(x, y) {
 }
 ```
 
-This demonstrates a basic function. A JavaScript function can take 0 or more named parameters. The function body can contain as many statements as you like and can declare its own variables which are local to that function. The `return` statement can be used to return a value at any time, terminating the function. If no return statement is used (or an empty return with no value), JavaScript returns `undefined`.
+A JavaScript function can take 0 or more named parameters. The function body can contain as many statements as you like and can declare its own variables which are local to that function. The `return` statement can be used to return a value at any time, terminating the function. If no return statement is used (or an empty return with no value), JavaScript returns `undefined`.
 
-The named parameters turn out to be more like guidelines than anything else. You can call a function without passing the parameters it expects, in which case they will be set to `undefined`.
+The named parameters turn out to be more like guidelines than anything else. 
+
+You can call a function without passing the parameters it expects, in which case they will be set to `undefined`.
 
 ```javascript
 add(); // NaN
@@ -534,7 +536,7 @@ add(2, 3, 4); // 5
 // added the first two; 4 was ignored
 ```
 
-That may seem a little silly, but functions have access to an additional variable inside their body called [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments), which is an array-like object holding all of the values passed to the function. Let's re-write the add function to take as many values as we want:
+Functions have access to an additional variable inside their body called [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments), which is an array-like object holding all of the values passed to the function. Let's re-write the add function to take as many values as we want:
 
 ```javascript
 function add() {
@@ -561,7 +563,7 @@ function avg() {
 avg(2, 3, 4, 5); // 3.5
 ```
 
-This is pretty useful, but it does seem a little verbose. To reduce this code a bit more we can look at substituting the use of the arguments array through [Rest parameter syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters). In this way, we can pass in any number of arguments into the function while keeping our code minimal. The **rest parameter operator** is used in function parameter lists with the format: **...variable** and it will include within that variable the entire list of uncaptured arguments that the function was called with. We will also replace the **for** loop with a **for...of** loop to return the values within our variable.
+To reduce this code a bit more we can look at substituting the use of the arguments array through [Rest parameter syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters). The **rest parameter operator** is used in function parameter lists with the format: **...variable** and it will include within that variable the entire list of uncaptured arguments that the function was called with. We will also replace the **for** loop with a **for...of** loop to return the values within our variable.
 
 ```javascript
 function avg(...args) {
@@ -668,7 +670,9 @@ Note that JavaScript functions are themselves objects — like everything else i
 
 > For a more detailed discussion of object-oriented programming in JavaScript, see [Introduction to Object-Oriented JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript).
 
-In classic Object Oriented Programming, objects are collections of data and methods that operate on that data. JavaScript is a **prototype-based** language that contains no class statement, as you'd find in C++ or Java (this is sometimes confusing for programmers accustomed to languages with a class statement). Instead, JavaScript uses functions as classes. Let's consider a person object with first and last name fields. There are two ways in which the name might be displayed: as "first last" or as "last, first". Using the functions and objects that we've discussed previously, we could display the data like this:
+In classic Object Oriented Programming, objects are collections of data and methods that operate on that data. JavaScript is a **prototype-based** language that contains no class statement, as you'd find in C++ or Java. Instead, JavaScript uses functions as classes. 
+
+Let's consider a person object with first and last name fields. There are two ways in which the name might be displayed: as "first last" or as "last, first". Using the functions and objects that we've discussed previously, we could display the data like this:
 
 ```javascript
 function makePerson(first, last) {
@@ -685,7 +689,7 @@ function personFullNameReserved(person) {
 }
 
 var s = makePerson('Simon', 'Willison');
-personFullName(s); // 'Simon Willison'
+personFullName(s);         // 'Simon Willison'
 personFullNameReserved(s); // 'Willison, Simon'
 ```
 
@@ -706,7 +710,7 @@ function makePerson(first, last) {
 }
 
 var s = makePerson('Simon', 'Willison');
-s.fullName(); // "Simon Willison"
+s.fullName();         // "Simon Willison"
 s.fullNameReversed(); // "Willison, Simon"
 ```
 
@@ -719,6 +723,8 @@ var s = makePerson('Simon', 'Willison');
 var fullName = s.fullName;
 fullName(); // undefined undefined
 ```
+
+When we call `fullName()` alone, without using `s.fullName()`, `this` is bound to the global object. Since there are no global variables called `first` or `last` we get `undefined` for each one.
 
 We can take advantage of the `this` keyword to improve our `makePerson` function:
 
@@ -736,11 +742,11 @@ function Person(first, last) {
 var s = new Person('Simon', 'Willison');
 ```
 
-We have introduced another keyword: `new`. `new` is strongly related to `this`. It creates a brand new empty object, and then calls the function specified, with `this` set to that new object. Notice though that the function specified with `this` does not return a value but merely modifies the `this` object. It's `new` that returns the `this` object to the calling site. Functions that are designed to be called by `new` are called constructor functions. Common practice is to capitalize these functions as a reminder to call them with `new`.
+We have introduced another keyword: `new`. `new` is strongly related to `this`. It creates a brand new empty object, and then calls the function specified, with `this` set to that new object. 
 
-The improved function still has the same pitfall with calling `fullName()` alone.
+Notice though that the function specified with `this` does not return a value but merely modifies the `this` object. It's `new` that returns the `this` object to the calling site. Functions that are designed to be called by `new` are called constructor functions. Common practice is to capitalize these functions as a reminder to call them with `new`.
 
-Our person objects are getting better, but there are still some ugly edges to them. Every time we create a person object we are creating two brand new function objects within it — wouldn't it be better if this code was shared?
+The improved function still has the same pitfall with calling `fullName()` alone. Our person objects are getting better, but there are still some ugly edges to them. Every time we create a person object we are creating two brand new function objects within it — wouldn't it be better if this code was shared?
 
 ```javascript
 function personFullName() {
@@ -832,7 +838,7 @@ function trivialNew(constructor, ...args) {
 }
 ```
 
-This isn't an exact replica of `new` as it doesn't set up the prototype chain (it would be difficult to illustrate). This is not something you use very often, but it's useful to know about. In this snippet, `...args` (including the ellipsis) is called the "[rest arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)" — as the name implies, this contains the rest of the arguments.
+This isn't an exact replica of `new` as it doesn't set up the prototype chain (it would be difficult to illustrate). This is not something you use very often, but it's useful to know about. In this snippet, `...args` (including the ellipsis) is called the "[rest arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)" — as contains the rest of the arguments.
 
 Calling
 
@@ -861,7 +867,7 @@ s.lastNameCaps(); // WILLISON
 
 ## Inner functions
 
-JavaScript function declarations are allowed inside other functions. We've seen this once before, with an earlier `makePerson()` function. An important detail of nested functions in JavaScript is that they can access variables in their parent function's scope:
+JavaScript function declarations are allowed inside other functions. We've seen this once before, with an earlier `makePerson()` function. An important detail of nested functions in JavaScript is that they can ***access variables in their parent function's scope***:
 
 ```javascript
 function parentFunc() {
@@ -904,12 +910,17 @@ add5(6); // returns 11
 add20(7); // returns 27
 ```
 
-Here's what's actually happening. Whenever JavaScript executes a function, a 'scope' object is created to hold the local variables created within that function. It is initialized with any variables passed in as function parameters. This is similar to the global object that all global variables and functions live in, but with a couple of important differences: firstly, a brand new scope object is created every time a function starts executing, and secondly, unlike the global object (which is accessible as `this` and in browsers as `window`) these scope objects cannot be directly accessed from your JavaScript code. There is no mechanism for iterating over the properties of the current scope object, for example.
+Here's what's actually happening. 
+
+Whenever JavaScript executes a function, a **'scope' object** is created to hold the local variables created within that function. It is initialized with any variables passed in as function parameters. This is similar to the global object that all global variables and functions live in, but with a couple of important differences: 
+
+- firstly, a brand new scope object is created every time a function starts executing, 
+- and secondly, unlike the global object (which is accessible as `this` and in browsers as `window`) these scope objects cannot be directly accessed from your JavaScript code. There is no mechanism for iterating over the properties of the current scope object, for example.
 
 So when `makeAdder()` is called, a scope object is created with one property: `a`, which is the argument passed to the `makeAdder()` function. `makeAdder()` then returns a newly created function. Normally JavaScript's garbage collector would clean up the scope object created for `makeAdder()` at this point, but the returned function maintains a reference back to that scope object. As a result, the scope object will not be garbage-collected until there are no more references to the function object that `makeAdder()` returned.
 
-Scope objects form a chain called the *scope chain*, similar to the prototype chain used by JavaScript's object system.
+Scope objects form a chain called the ***scope chain***, similar to the prototype chain used by JavaScript's object system.
 
 A **closure** is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects. You can find [several excellent introductions to closures](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work).
 
-/- End -
+\- End -
