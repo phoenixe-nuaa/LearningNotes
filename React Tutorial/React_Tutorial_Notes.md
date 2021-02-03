@@ -877,4 +877,4 @@ npm run deploy
 
 And we're done! The app is now available live at https://taniarascia.github.io/react-tutorial.
 
-/- End of tutorial -
+\- End of tutorial -
