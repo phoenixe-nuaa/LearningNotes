@@ -1,3 +1,5 @@
+[toc]
+
 # [Lecture 1](https://www.youtube.com/watch?v=rfi4L0X80yY)
 
 ## 重要数量级与复杂度对照

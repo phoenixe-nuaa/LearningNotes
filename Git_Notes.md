@@ -1,3 +1,5 @@
+[toc]
+
 # [Git笔记](https://juejin.cn/post/6844904199189184525)
 
 ## 简介

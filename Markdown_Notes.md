@@ -1,3 +1,5 @@
+[toc]
+
 # Typora[入门](https://www.cnblogs.com/hider/p/11614688.html)
 
 ## 特点
@@ -30,7 +32,6 @@
   sum_{i=1}^n a_i = 0
   $$
   
-
 - 标题：
 
   - # 一级标题：Ctrl + 1
