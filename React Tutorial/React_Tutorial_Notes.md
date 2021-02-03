@@ -682,7 +682,7 @@ class Form extends Component {
 }
 ```
 
-Our goal for this form will be to update the state of `Form` every time a field is changed in the form, and when we submit, all that data will pass to the `App` state, which will then update the `Table`.
+*Our goal for this form will be to update the state of `Form` every time a field is changed in the form, and when we submit, all that data will pass to the `App` state, which will then update the `Table`.*
 
 First, we'll make the function that will run every time a change is made to an input. The `event` will be passed through, and we'll set the state of `Form` to have the `name` (key) and `value` of the inputs.
 
@@ -696,7 +696,9 @@ handleChange = (event) => {
 }
 ```
 
-Let's get this working before we move on to submitting the form. In the render, let's get our two properties from state, and assign them as the values that correspond to the proper form keys. We'll run the `handleChange()` method as the `onChange` of the input, and finally we'll export the `Form` component.
+Let's get this working before we move on to submitting the form. 
+
+In the render, let's get our two properties from state, and assign them as the values that correspond to the proper form keys. We'll run the `handleChange()` method as the `onChange` of the input, and finally we'll export the `Form` component.
 
 ```react
 render() {
@@ -775,3 +777,104 @@ And that's it! The app is complete. We can create, add, and remove users from ou
 
 ## Pulling in API Data
 
+One very common usage of React is pulling in data from an API. If you're not familiar with what an API is or how to connect to one, I would recommend reading [How to Connect to an API with JavaScript](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/), which will walk you through what APIs are and how to use them with vanilla JavaScript.
+
+As a little test, we can create a new `Api.js` file, and create a new `App` in there. A public API we can test with is the [Wikipedia API](https://en.wikipedia.org/w/api.php), and I have a [URL endpoint right here](https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona+Dancing&format=json&origin=*) for a random* search. You can go to that link to see the API - and make sure you have [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc) installed on your browser.
+
+We're going to use [JavaScript's built-in Fetch](https://www.taniarascia.com/how-to-use-the-javascript-fetch-api-to-get-json-data/) to gather the data from that URL endpoint and display it. You can switch between the app we created and this test file by just changing the URL in `index.js` - `import App from './Api';`.
+
+I'm not going to explain this code line-by-line, as we've already learned about creating a component, rendering, and mapping through a state array. The new aspect to this code is `componentDidMount()`, a React lifecycle method. **Lifecycle** is the order in which methods are called in React. **Mounting** refers to an item being inserted into the DOM.
+
+When we pull in API data, we want to use `componentDidMount`, because we want to make sure the component has rendered to the DOM before we bring in the data. In the below snippet, you'll see how we bring in data from the Wikipedia API, and display it on the page
+
+```react
+import React, {Component} from 'react'
+
+class App extends Component {
+  state = {
+    data: [],
+  }
+
+  // Code is invoked after the component is mounted/inserted into the DOM tree.
+  componentDidMount() {
+    const url =
+      'https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona+Dancing&format=json&origin=*'
+
+    fetch(url)
+      .then((result) => result.json())
+      .then((result) => {
+        this.setState({
+          data: result,
+        })
+      })
+  }
+
+  render() {
+    const {data} = this.state
+
+    const result = data.map((entry, index) => {
+      return <li key={index}>{entry}</li>
+    })
+
+    return <ul>{result}</ul>
+  }
+}
+
+export default App
+```
+
+Once you save and run this file in the local server, you'll see the Wikipedia API data displayed in the DOM.
+
+There are other lifecycle methods, but going over them will be beyond the scope of this article. You can [read more about React components here](https://reactjs.org/docs/react-component.html).
+
+## Building and Deploying a React App
+
+Everything we've done so far has been in a development environment. We've been compiling, hot-reloading, and updating on the fly. For production, we're going to want to have static files loading in - none of the source code. We can do this by making a build and deploying it.
+
+Now, if you just want to compile all the React code and place it in the root of a directory somewhere, all you need to do is run the following line:
+
+```shell
+npm run build
+```
+
+This will create a `build` folder which will contain your app. Put the contents of that folder anywhere, and you're done!
+
+We can also take it a step further, and have npm deploy for us. We're going to build to GitHub pages, so you'll already have to [be familiar with Git](https://www.taniarascia.com/getting-started-with-git/) and getting your code up on GitHub.
+
+Make sure you've exited out of your local React environment, so the code isn't currently running. First, we're going to add a `homepage` field to `package.json`, that has the URL we want our app to live on.
+
+```js
+"homepage": "https://taniarascia.github.io/react-tutorial",
+```
+
+We'll also add these two lines to the `scripts` property.
+
+```js
+"scripts": {
+  // ...
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
+```
+
+In your project, you'll add `gh-pages` to the devDependencies.
+
+```shell
+npm install --save-dev gh-pages
+```
+
+We'll create the `build`, which will have all the compiled, static files.
+
+```shell
+npm run build
+```
+
+Finally, we'll deploy to `gh-pages`.
+
+```shell
+npm run deploy
+```
+
+And we're done! The app is now available live at https://taniarascia.github.io/react-tutorial.
+
+/- End of tutorial -
