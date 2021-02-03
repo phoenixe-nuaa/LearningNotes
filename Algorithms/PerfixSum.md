@@ -12,9 +12,9 @@
 
 因此我们得到了这样一个数据结构：
 
-可以用一次**O(N)**的时间完成序列的初始化（得到前缀和序列）。
+可以用一次O(N)的时间完成序列的初始化（得到前缀和序列）。
 
-可以每次**O(1)**的时间快速的计算原序列 某个区间的和。
+可以每次O(1)的时间快速的计算原序列 某个区间的和。
 
 也适用于写入很少读入频繁的情况。
 
@@ -130,7 +130,7 @@ class Solution {
 }
 ```
 
-1177. [Can Make Palindrome from Substring](https://leetcode.com/problems/can-make-palindrome-from-substring/)
+1177. #### [Can Make Palindrome from Substring](https://leetcode.com/problems/can-make-palindrome-from-substring/)
 
 ==还要再看。==
 
@@ -192,7 +192,7 @@ class Solution {
 }
 ```
 
-（新）1658. [Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/)
+#### （新）1658. [Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/)
 
 ==还要再看。==
 
@@ -267,7 +267,7 @@ class Solution {
 }
 ```
 
-1292. [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/)
+1292. #### [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/)
 
 前缀和/滑动窗口
 

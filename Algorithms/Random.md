@@ -160,7 +160,7 @@ class Solution extends SolBase {
 
 随机翻转矩形中为0的点，要求call random的次数越少越好。所以考虑每次只随机还是0的点。类似[Fisher-Yates shuffle算法的modern版本](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle)。因为数据范围较大，会出现memory limit exceed，因为call flip的次数不超过1000，考虑可以随机1000个结果存下来。
 
-478. [Generate Random Point in a Circle](https://leetcode.com/problems/generate-random-point-in-a-circle)
+478. ##### [Generate Random Point in a Circle](https://leetcode.com/problems/generate-random-point-in-a-circle)
 
 随机生成圆中的点，因为需要保证面积上均匀分布，考虑像蒙特卡洛法求pi一样，给定d长的正方形，随机生成横纵坐标，然后判断在不在圆里，如果不在的话就reject，在的话就保留。
 
@@ -193,9 +193,9 @@ class Solution {
 
 前置知识前缀和，二分
 
-528. [Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight)
+528. ##### [Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight)
 
-生成0到权重和-1的随机数，分段表示随机到哪一个数，可以在前缀和上二分，假设生成的随机数是k，找<=k的最大值（也可以用treemap的ceilingKey做）。例如，[5，7，3]。权值前缀和数组为[0，5，12，15]。随机生成0~14的值。如果是0~4就是0号元素。如果是5~11就是1号元素。如果是12~14就是2号元素。
+生成0到权重和-1的随机数，分段表示随机到哪一个数，可以在前缀和上二分，假设生成的随机数是k，找<=k的最大值（也可以用treemap的ceilingKey做）。例如，[5，7，3]。权值前缀和数组为[0，5，12，15]。随机生成0\~14的值。如果是0\~4就是0号元素。如果是5\~11就是1号元素。如果是12\~14就是2号元素。
 
 ```java
 class Solution {
@@ -287,7 +287,7 @@ class Solution {
 
 710. ##### [Random Pick with Blacklist](https://leetcode.com/problems/random-pick-with-blacklist/)
 
-随机0~N之间非黑名单里的点。因为需要optimize random call的次数，所以rejection sampling并不适用。换一种思路，黑名单里的点把0~N分割成了很多小段，可以先按小段长度作为权重来随机，然后再随机选中小段里的点。遍历N会TLE，考虑遍历blacklist来建立interval。
+随机0\~N之间非黑名单里的点。因为需要optimize random call的次数，所以rejection sampling并不适用。换一种思路，黑名单里的点把0\~N分割成了很多小段，可以先按小段长度作为权重来随机，然后再随机选中小段里的点。遍历N会TLE，考虑遍历blacklist来建立interval。
 
 ```java
 class Solution {
