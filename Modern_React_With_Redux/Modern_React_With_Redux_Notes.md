@@ -1082,5 +1082,5 @@ export default ImageCard;
 
 #### Flow
 
-![](C:\Users\Chen.JL\OneDrive - Northeastern University\LearningNotes\Modern_React_With_Redux\flow.png)
+![](flow.png)
 
