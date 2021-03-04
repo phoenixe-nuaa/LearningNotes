@@ -141,6 +141,26 @@ cd react-tutorial && npm start
 
 Once you run this command, a new window will popup at `localhost:3000` with your new React app.
 
+To stop the React App,
+
+> Press Control + C in the terminal.
+
+To kill the process:
+
+*Step 1:*
+
+```
+netstat -ano | findstr :yourPortNumber
+```
+
+*Step 2:*
+
+```
+tskill typeyourPIDhere 
+```
+
+*Note*: `taskkill` is not working in some git bash terminal
+
 > Create React App is very good for getting started for beginners as well as large-scale enterprise applications, but it's not perfect for every workflow. You can also create your own Webpack setup for React.
 
 If you look into the project structure, you'll see a `/public` and `/src` directory, along with the regular `node_modules`, `.gitignore`, `README.md`, and `package.json`.
